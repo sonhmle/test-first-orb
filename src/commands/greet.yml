@@ -19,7 +19,7 @@ steps:
   - run:
       environment:
         PARAM_TO: "<<parameters.to>>"
-        PARAM_AND: "<<parameters.and>>"
+        PARAM_AND: <<parameters.and>>
         PARAM_BRANCH: "<<parameters.branch>>"
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
