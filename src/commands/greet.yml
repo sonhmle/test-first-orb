@@ -5,6 +5,8 @@ description: >
 steps:
   - run:
       environment:
-        PARAM_BRANCH: $CIRCLE_BRANCH
+        PARAM_BRANCH: CIRCLE_BRANCH
+        PARAM_BRANCHES: $CIRCLE_BRANCH
+        PARAM_BRANCH_NEXT: ${CIRCLE_BRANCH}
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
