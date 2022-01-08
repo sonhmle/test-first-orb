@@ -1,5 +1,5 @@
 Greet() {
-    echo Hello "$PARAM_TO" and "${PARAM_AND}" for "${TO_NAME:-}" of "$PARAM_BRANCH"
+    echo "Hello $PARAM_TO and ${PARAM_AND} for ${TO_NAME:-} of $PARAM_BRANCH"
 }
 
 # Will not run if sourced for bats-core tests.
