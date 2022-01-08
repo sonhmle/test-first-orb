@@ -13,3 +13,4 @@ parameters:
 steps:
   - greet:
       to: << parameters.to >>
+      and: AND_NAME

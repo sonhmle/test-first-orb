@@ -1,5 +1,5 @@
 Greet() {
-    echo Hello "${PARAM_TO}" and "${PARAM_AND}" for "$TO_NAME" of "$CIRCLE_BRANCH"
+    echo Hello "${PARAM_TO}" and "${PARAM_AND}" for "$TO_NAME" of "$BRANCH_IS"
 }
 
 # Will not run if sourced for bats-core tests.

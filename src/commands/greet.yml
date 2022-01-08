@@ -8,12 +8,12 @@ parameters:
     description: "Hello to whom?"
   and:
     type: env_var_name
-    default: AND_NAME
     description: "another name yeah"
 steps:
   - run:
       environment:
-        PARAM_TO: <<parameters.to>>
+        PARAM_TO: $TO_NAME
         PARAM_AND: <<parameters.and>>
+        BRANCH_IS: $CIRCLE_BRANCH
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
