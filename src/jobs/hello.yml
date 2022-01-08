@@ -5,12 +5,5 @@ description: >
 
 executor: default
 
-parameters:
-  to:
-    type: env_var_name
-    default: TO_NAME
-    description: "Hello to whom?"
 steps:
-  - greet:
-      to: << parameters.to >>
-      and: AND_NAME
+  - greet
