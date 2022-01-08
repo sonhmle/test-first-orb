@@ -4,12 +4,16 @@ description: >
 # Descriptions should be short, simple, and clear.
 parameters:
   to:
-    type: string
-    default: "World"
+    type: env_var_name
     description: "Hello to whom?"
+  and:
+    type: env_var_name
+    default: AND_NAME
+    description: "another name yeah"
 steps:
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
+        PARAM_AND: <<parameters.and>>
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
