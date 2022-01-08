@@ -5,15 +5,15 @@ description: >
 parameters:
   to:
     type: string
-    default: $TO_NAME
+    default: TO_NAME
     description: "Hello to whom?"
   and:
     type: string
-    default: $AND_NAME
+    default: AND_NAME
     description: "another name yeah"
   branch:
     type: string
-    default: $CIRCLE_BRANCH
+    default: CIRCLE_BRANCH
     description: "The branch to use"
 steps:
   - run:
