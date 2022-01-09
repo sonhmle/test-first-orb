@@ -18,8 +18,4 @@ parameters:
 steps:
   - run:
       name: Hello Greeting
-      command: |
-        echo "Hello World"
-        echo "to $<<parameters.to>>"
-        echo "and $<<parameters.and>>"
-        echo "for $<<parameters.branch>>"
+      command: <<include(scripts/greet.sh)>>
