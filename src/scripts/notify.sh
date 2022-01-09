@@ -8,7 +8,7 @@ CheckEnvVars() {
        echo "No channel was provided. Enter value for SLACK_DEFAULT_CHANNEL env var, or channel parameter"
        exit 1
     fi
-    echo "It ${CIRCLE_BRANCH}"
+    printf '\nbranch %s \n' "$CIRCLE_BRANCH"
     echo "Hello ${SLACK_PARAM_CHANNEL}"
 }
 
