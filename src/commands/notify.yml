@@ -29,7 +29,7 @@ steps:
       command: |
         echo 'export TO_PARAM=$<<parameters.to>>' >> $BASH_ENV
         echo 'export IT_BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
-        echo 'export SLACK_DEFAULT_CHANNEL=$<<parameters.channel>>' >> $BASH_ENV
+        echo 'export SLACK_PARAM_CHANNEL=<<parameters.channel>>' >> $BASH_ENV
   - run:
       when: always
       name: Slack - Sending Notification
