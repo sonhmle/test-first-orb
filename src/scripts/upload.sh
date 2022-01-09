@@ -6,8 +6,8 @@ printf "KOBITON APP UPLOAD PLUGIN"
 printf "\n=====================================================================================\n\n"
 
 printf "Installing ack...\n"
-sudo chmod 755 /usr/local/bin
-curl https://beyondgrep.com/ack-v3.5.0 >/usr/local/bin/ack && sudo chmod 755 /usr/local/bin/ack
+sudo chmod -R a+x /usr/local/bin
+curl https://beyondgrep.com/ack-v3.5.0 >/usr/local/bin/ack
 
 printf "Finish downloading ack\n"
 
