@@ -10,6 +10,7 @@ CheckEnvVars() {
     fi
     echo "branch $IT_BRANCH of ${TO_PARAM}"
     printf 'Hello %s \n' "$SLACK_PARAM_CHANNEL"
+    printf '\and name: %s \n' "$AND_NAME"
 }
 
 # Greet
