@@ -6,7 +6,10 @@ printf "KOBITON APP UPLOAD PLUGIN"
 printf "\n=====================================================================================\n\n"
 
 printf "Installing ack...\n"
-curl https://beyondgrep.com/ack-v3.5.0 >/usr/local/bin/ack && chmod 0755 /usr/local/bin/ack
+chmod 755 /user/local/bin
+curl https://beyondgrep.com/ack-v3.5.0 && chmod 755 /usr/local/bin/ack
+
+printf "Finish downloading ack\n"
 
 hash ack 2>/dev/null || {
     echo >&2 "ack required, but it's not installed."
