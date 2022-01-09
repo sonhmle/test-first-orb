@@ -1,0 +1,23 @@
+description: >
+  This step will take an .apk or .ipa file and upload it to the Kobiton App Repository. You can find your API key at https://portal.kobiton.com/settings/keys
+
+# parameters:
+  # to:
+  #   type: env_var_name
+  #   default: TO_NAME
+  #   description: "Hello to whom?"
+  # channel:
+  #   description: |
+  #     Select which channel in which to post to. Channel name or ID will work. You may include a comma separated list of channels if you wish to post to multiple channels at once. Set the "SLACK_DEFAULT_CHANNEL" environment variable for the default channel.
+  #   type: string
+  #   default: $SLACK_DEFAULT_CHANNEL
+steps:
+  # - run:
+  #     name: export value
+  #     command: |
+  #       echo 'export TO_PARAM=$<<parameters.to>>' >> $BASH_ENV
+  #       echo 'export IT_BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
+  #       echo 'export SLACK_PARAM_CHANNEL=<<parameters.channel>>' >> $BASH_ENV
+  - run:
+      name: Kobiton - Uploading an app
+      command: <<include(scripts/upload.sh)>>
