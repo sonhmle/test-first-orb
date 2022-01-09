@@ -28,8 +28,8 @@ steps:
       when: always
       name: Slack - Sending Notification
       environment:
-        SLACK_PARAM_CHANNEL: "<<parameters.channel>>"
+        SLACK_PARAM_CHANNEL: $<<parameters.channel>>
       command: <<include(scripts/notify.sh)>>
   - run:
       name: Echo Hello World
-      command: echo "Hello <<parameters.channel>>"
+      command: echo "Hello $<<parameters.channel>>"
