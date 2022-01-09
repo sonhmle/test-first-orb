@@ -4,12 +4,12 @@
 # }
 
 CheckEnvVars() {
-    if [ -z "${SLACK_PARAM_CHANNEL:-}" ]; then
-       echo "No channel was provided. Enter value for SLACK_DEFAULT_CHANNEL env var, or channel parameter"
+    if [ -z "${AND_NAME:-}" ]; then
+       echo "No AND_NAME env var set"
        exit 1
     fi
     echo "branch $IT_BRANCH of ${TO_PARAM}"
-    printf 'Hello %s \n' "${SLACK_PARAM_CHANNEL}"
+    printf 'Hello %s \n' "$SLACK_PARAM_CHANNEL"
 }
 
 # Greet
