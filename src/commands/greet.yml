@@ -12,8 +12,8 @@ parameters:
     default: AND_NAME
     description: "another name yeah"
   branch:
-    type: string
-    default: $CIRCLE_BRANCH
+    type: env_var_name
+    default: CIRCLE_BRANCH
     description: "The branch to use"
 steps:
   - run:
