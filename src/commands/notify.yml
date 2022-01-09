@@ -30,3 +30,6 @@ steps:
       environment:
         SLACK_PARAM_CHANNEL: "<<parameters.channel>>"
       command: <<include(scripts/notify.sh)>>
+  - run:
+      name: Echo Hello World
+      command: echo "Hello <<parameters.channel>>"
