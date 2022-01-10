@@ -1,24 +1,45 @@
 description: >
   This step will take an .apk or .ipa file and upload it to the Kobiton App Repository. You can find your API key at https://portal.kobiton.com/settings/keys
 
-# parameters:
-  # to:
-  #   type: env_var_name
-  #   default: TO_NAME
-  #   description: "Hello to whom?"
-  # channel:
-  #   description: |
-  #     Select which channel in which to post to. Channel name or ID will work. You may include a comma separated list of channels if you wish to post to multiple channels at once. Set the "SLACK_DEFAULT_CHANNEL" environment variable for the default channel.
-  #   type: string
-  #   default: $SLACK_DEFAULT_CHANNEL
+parameters:
+  KOBITON_APP_NAME:
+    type: env_var_name
+    description: Title of the app to be built
+  KOBITON_APP_PATH:
+    type: string
+    description: Path to the app .apk or .ipa file
+  KOBITON_APP_ID:
+    type: string
+    description: App ID in Kobiton - use this in case you want to upload new version of an existing app in Kobiton
+    default: ""
+  KOBITON_USERNAME:
+    type: env_var_name
+    description: The user to upload to Kobiton
+  KOBITON_API_KEY:
+    type: env_var_name
+    description: Specific key to access Kobiton API
+  KOBITON_APP_TYPE:
+    type: enum
+    description: Type of the app to be uploaded - Android or iOS
+    default: "apk"
+    enum: ["apk", "ipa"]
+  KOBITON_APP_ACCESS:
+    type: enum
+    description: You can either to make this app private or available for everyone in the organization
+    default: "public"
+    enum: ["public", "private"]
 steps:
   - checkout
-  # - run:
-  #     name: export value
-  #     command: |
-  #       echo 'export TO_PARAM=$<<parameters.to>>' >> $BASH_ENV
-  #       echo 'export IT_BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
-  #       echo 'export SLACK_PARAM_CHANNEL=<<parameters.channel>>' >> $BASH_ENV
+  - run:
+      name: Export values
+      command: |
+        echo 'export APP_NAME_INPUT=$<<parameters.KOBITON_APP_NAME>>' >> $BASH_ENV
+        echo 'export APP_PATH_INPUT=$<<parameters.KOBITON_APP_PATH>>' >> $BASH_ENV
+        echo 'export APP_ID_INPUT=$<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
+        echo 'export KOB_USERNAME_INPUT=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
+        echo 'export KOB_APIKEY_INPUT=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
+        echo 'export APP_SUFFIX_INPUT=$<<parameters.KOBITON_APP_TYPE>>' >> $BASH_ENV
+        echo 'export KOB_APP_ACCESS=$<<parameters.KOBITON_APP_ACCESS>>' >> $BASH_ENV
   - run:
       name: Kobiton - Uploading an app
       working_directory: _tmp
