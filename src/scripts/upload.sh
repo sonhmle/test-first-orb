@@ -70,7 +70,7 @@ curl -X GET https://api-test.kobiton.com/v1/app/versions/"$APP_VERSION_ID" \
     -H "Accept: application/json" \
     -o ".tmp.get-appversion-response.json"
 
-APP_ID=$(< ".tmp.get-appversion-response.json" ack -o -h --match '(?<=appId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
+APP_ID=$(ack -o -h --match '(?<=appId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
 curl -X PUT https://api-test.kobiton.com/v1/apps/"$APP_ID"/"$KOB_APP_ACCESS" \
     -H "Authorization: Basic $BASICAUTH"
