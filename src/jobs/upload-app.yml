@@ -15,7 +15,6 @@ executor: default
   #     default: TO_NAME
 
 steps:
-  - checkout
   # - notify:
   #     channel: <<parameters.channel>>
   #     to: <<parameters.to>>

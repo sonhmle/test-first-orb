@@ -12,6 +12,7 @@ description: >
   #   type: string
   #   default: $SLACK_DEFAULT_CHANNEL
 steps:
+  - checkout
   # - run:
   #     name: export value
   #     command: |
