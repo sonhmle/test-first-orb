@@ -7,7 +7,9 @@ parameters:
     description: Title of the app to be built
   KOBITON_APP_PATH:
     type: string
-    description: Path to the app .apk or .ipa file
+    description: |
+      Path to the app .apk or .ipa file (should be in the same repo
+      and start with ../ for example: ../test.apk)
   KOBITON_APP_ID:
     type: env_var_name
     description: App ID in Kobiton - use this in case you want to upload new version of an existing app in Kobiton
@@ -20,12 +22,12 @@ parameters:
     description: Specific key to access Kobiton API
   KOBITON_APP_TYPE:
     type: enum
-    description: Type of the app to be uploaded - Android or iOS
+    description: Type of the app to be uploaded - Android (apk) or iOS (ipa)
     default: "apk"
     enum: ["apk", "ipa"]
   KOBITON_APP_ACCESS:
     type: enum
-    description: You can either to make this app private or available for everyone in the organization
+    description: You can either to make this app private or available for everyone in the organization (private vs. public)
     default: "public"
     enum: ["public", "private"]
 steps:
