@@ -44,9 +44,6 @@ curl --silent -X POST https://api-test.kobiton.com/v1/apps/uploadUrl \
 
 cat ".tmp.upload-url-response.json"
 
-pwd
-ls -la
-
 UPLOAD_URL=$(ack -o -h --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 KAPPPATH=$(ack -o -h --match '(?<=appPath\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
