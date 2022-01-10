@@ -17,6 +17,9 @@ hash ack 2>/dev/null || {
     exit 1
 }
 
+pwd
+ls -la
+
 APP_NAME_INPUT=$KOBITON_APP_NAME
 APP_PATH_INPUT=$KOBITON_APP_PATH
 APP_ID_INPUT=$KOBITON_APP_ID
@@ -82,6 +85,9 @@ APP_ID=$(< ".tmp.get-appversion-response.json" ack -o --match '(?<=appId\":)([_\
 
 curl -X PUT https://api-test.kobiton.com/v1/apps/"$APP_ID"/"$KOB_APP_ACCESS" \
     -H "Authorization: Basic $BASICAUTH"
+
+pwd
+ls -la
 
 echo "Uploaded app to kobiton repo with appId: ${APP_ID} and versionId: ${APP_VERSION_ID}"
 echo "Done"
