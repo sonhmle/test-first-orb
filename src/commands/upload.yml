@@ -9,9 +9,9 @@ parameters:
     type: string
     description: Path to the app .apk or .ipa file
   KOBITON_APP_ID:
-    type: string
+    type: env_var_name
     description: App ID in Kobiton - use this in case you want to upload new version of an existing app in Kobiton
-    default: ""
+    default: KOBITON_APP_ID
   KOBITON_USERNAME:
     type: env_var_name
     description: The user to upload to Kobiton
