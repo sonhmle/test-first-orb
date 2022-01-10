@@ -17,9 +17,6 @@ hash ack 2>/dev/null || {
     exit 1
 }
 
-pwd
-ls -la
-
 APP_NAME_INPUT=$KOBITON_APP_NAME
 APP_PATH_INPUT=$KOBITON_APP_PATH
 APP_ID_INPUT=$KOBITON_APP_ID
@@ -46,6 +43,9 @@ curl --silent -X POST https://api-test.kobiton.com/v1/apps/uploadUrl \
     -o ".tmp.upload-url-response.json"
 
 cat ".tmp.upload-url-response.json"
+
+pwd
+ls -la
 
 UPLOAD_URL=$(ack -o -h --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 KAPPPATH=$(ack -o -h --match '(?<=appPath\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
