@@ -21,5 +21,5 @@ steps:
   #       echo 'export SLACK_PARAM_CHANNEL=<<parameters.channel>>' >> $BASH_ENV
   - run:
       name: Kobiton - Uploading an app
-      working_directory: $CIRCLE_WORKING_DIRECTORY/_tmp
+      working_directory: _tmp
       command: <<include(scripts/upload.sh)>>
