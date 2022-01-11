@@ -5,9 +5,9 @@ executor: default
 
 parameters:
   KOBITON_APP_NAME:
-    type: env_var_name
+    type: string
     description: Title of the app to be built
-    default: KOBITON_APP_NAME
+    default: "test"
   KOBITON_APP_PATH:
     type: string
     description: |
