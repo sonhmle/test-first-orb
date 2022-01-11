@@ -36,8 +36,8 @@ curl --silent -X POST https://api-test.kobiton.com/v1/apps/uploadUrl \
 
 cat ".tmp.upload-url-response.json"
 
-UPLOAD_URL=$(ack -o -h --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
-KAPPPATH=$(ack -o -h --match '(?<=appPath\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
+UPLOAD_URL=$(ack -o -h --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)' ".tmp.upload-url-response.json")
+KAPPPATH=$(ack -o -h --match '(?<=appPath\":")([_\%\&=\?\.aA-zZ0-9:/-]*)' ".tmp.upload-url-response.json")
 
 echo "Uploading: ${APP_NAME_INPUT} (${APP_PATH_INPUT})"
 echo "URL: ${UPLOAD_URL}"
@@ -60,7 +60,7 @@ curl -X POST https://api-test.kobiton.com/v1/apps \
 echo "Response:"
 cat ".tmp.upload-app-response.json"
 
-APP_VERSION_ID=$(ack -o -h --match '(?<=versionId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
+APP_VERSION_ID=$(ack -o -h --match '(?<=versionId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)' ".tmp.upload-app-response.json")
 
 # Kobiton need some times to update the appId for new appVersion
 sleep 30
@@ -70,7 +70,7 @@ curl -X GET https://api-test.kobiton.com/v1/app/versions/"$APP_VERSION_ID" \
     -H "Accept: application/json" \
     -o ".tmp.get-appversion-response.json"
 
-APP_ID=$(ack -o -h --match '(?<=appId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
+APP_ID=$(ack -o -h --match '(?<=appId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)' ".tmp.get-appversion-response.json")
 
 curl -X PUT https://api-test.kobiton.com/v1/apps/"$APP_ID"/"$KOB_APP_ACCESS" \
     -H "Authorization: Basic $BASICAUTH"
