@@ -3,7 +3,7 @@ description: >
 
 parameters:
   KOBITON_APP_NAME:
-    type: env_var_name
+    type: string
     description: Title of the app to be built
   KOBITON_APP_PATH:
     type: string
@@ -35,7 +35,7 @@ steps:
   - run:
       name: Export values
       command: |
-        echo 'export APP_NAME_INPUT=$<<parameters.KOBITON_APP_NAME>>' >> $BASH_ENV
+        echo 'export APP_NAME_INPUT=<<parameters.KOBITON_APP_NAME>>' >> $BASH_ENV
         echo 'export APP_PATH_INPUT=<<parameters.KOBITON_APP_PATH>>' >> $BASH_ENV
         echo 'export APP_ID_INPUT=$<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
         echo 'export KOB_USERNAME_INPUT=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
