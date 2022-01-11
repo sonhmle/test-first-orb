@@ -1,0 +1,24 @@
+description: >
+  Sample example description.
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    test-first: sonhmle-space/test-first-orb@<version>
+  workflows:
+  main:
+    jobs:
+      - test-first-orb/upload-app:
+          KOBITON_APP_PATH: ../test.apk
+      - test-first-orb/upload-app:
+          KOBITON_APP_PATH: ../demo/android-test.apk
+          KOBITON_APP_NAME: Android test
+          KOBITON_APP_ID: KOBITON_APP_ID_ONE
+          KOBITON_APP_ACCESS: public
+      - test-first-orb/upload-app:
+          KOBITON_APP_PATH: ../demo/ios-test.ipa
+          KOBITON_APP_NAME: Ios test
+          KOBITON_APP_ACCESS: private
+          KOBITON_APP_TYPE: ipa
