@@ -1,5 +1,5 @@
 description: >
-  Sample example description.
+  Upload multiple apps including apk and ipa, with private and public mode as well as upload to an existing app with app id
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
@@ -14,11 +14,11 @@ usage:
             KOBITON_APP_PATH: ../test.apk
         - test-first-orb/upload-app:
             KOBITON_APP_PATH: ../demo/android-test.apk
-            KOBITON_APP_NAME: Android test
-            KOBITON_APP_ID: KOBITON_APP_ID_ONE
+            KOBITON_APP_NAME: 'Android test'
+            KOBITON_APP_ID: '275643'
             KOBITON_APP_ACCESS: public
         - test-first-orb/upload-app:
             KOBITON_APP_PATH: ../demo/ios-test.ipa
-            KOBITON_APP_NAME: Ios test
+            KOBITON_APP_NAME: 'Ios test'
             KOBITON_APP_ACCESS: private
             KOBITON_APP_TYPE: ipa

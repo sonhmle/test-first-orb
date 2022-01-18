@@ -6,24 +6,24 @@ executor: default
 parameters:
   KOBITON_APP_NAME:
     type: string
-    description: Title of the app to be built
-    default: "test"
+    description: Title of the app to be built (optional)
+    default: "demo-app"
   KOBITON_APP_PATH:
     type: string
     description: |
       Path to the app .apk or .ipa file (should be in the same repo
-      and start with ../ for example: ../test.apk)
+      and start with ../ for example: ../test.apk) (required as parameter in config file)
   KOBITON_APP_ID:
-    type: env_var_name
-    description: App ID in Kobiton - use this in case you want to upload new version of an existing app in Kobiton
-    default: KOBITON_APP_ID
+    type: string
+    description: App ID in Kobiton - use this in case you want to upload new version of an existing app in Kobiton (optional)
+    default: ""
   KOBITON_USERNAME:
     type: env_var_name
-    description: The user to upload to Kobiton
+    description: The user to upload to Kobiton (required as env variable in project settings)
     default: KOBITON_USERNAME
   KOBITON_API_KEY:
     type: env_var_name
-    description: Specific key to access Kobiton API
+    description: Specific key to access Kobiton API (required as env variable in project settings)
     default: KOBITON_API_KEY
   KOBITON_APP_TYPE:
     type: enum
