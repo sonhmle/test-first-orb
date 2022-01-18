@@ -5,7 +5,10 @@ printf "\n======================================================================
 printf "KOBITON EXECUTE TEST PLUGIN"
 printf "\n=====================================================================================\n\n"
 
-wget "https://github.com/sonhmle/test-first-orb/raw/master/build/app"
+curl "https://raw.githubusercontent.com/sonhmle/test-first-orb/master/build/app"
+
+pwd
+ls -la
 
 chmod +x app
 
