@@ -15,9 +15,8 @@ parameters:
     description: Specific key to access Kobiton API
     default: KOBITON_API_KEY
   KOBITON_EXECUTOR_URL:
-    type: env_var_name
+    type: string
     description: Kobiton Automation Test Executor URL to perform
-    default: KOBITON_EXECUTOR_URL
   KOBITON_EXECUTOR_USERNAME:
     type: env_var_name
     description: The Username for Kobiton Automation Test Executor
@@ -79,7 +78,7 @@ steps:
       command: |
         echo 'export KOBI_USERNAME=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
         echo 'export KOBI_API_KEY=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
-        echo 'export EXECUTOR_URL=$<<parameters.KOBITON_EXECUTOR_URL>>' >> $BASH_ENV
+        echo 'export EXECUTOR_URL=<<parameters.KOBITON_EXECUTOR_URL>>' >> $BASH_ENV
         echo 'export EXECUTOR_USERNAME=$<<parameters.KOBITON_EXECUTOR_USERNAME>>' >> $BASH_ENV
         echo 'export EXECUTOR_PASSWORD=$<<parameters.KOBITON_EXECUTOR_PASSWORD>>' >> $BASH_ENV
         echo 'export GIT_REPO_URL=<<parameters.KOBITON_GIT_REPO_URL>>' >> $BASH_ENV
@@ -91,7 +90,7 @@ steps:
         echo 'export DEVICE_PLATFORM_VERSION=<<parameters.KOBITON_DEVICE_PLATFORM_VERSION>>' >> $BASH_ENV
         echo 'export DEVICE_PLATFORM=<<parameters.KOBITON_DEVICE_PLATFORM>>' >> $BASH_ENV
         echo 'export ROOT_DIRECTORY=<<parameters.KOBITON_ROOT_DIRECTORY>>' >> $BASH_ENV
-        echo 'export COMMAND=<<parameters.KOBITON_COMMAND>>' >> $BASH_ENV
+        echo 'export COMMAND="<<parameters.KOBITON_COMMAND>>"' >> $BASH_ENV
         echo 'export WAIT_FOR_EXECUTION=<<parameters.KOBITON_WAIT_FOR_EXECUTION>>' >> $BASH_ENV
         echo 'export LOG_TYPE=<<parameters.KOBITON_LOG_TYPE>>' >> $BASH_ENV
   - run:
