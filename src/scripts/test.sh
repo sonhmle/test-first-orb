@@ -5,11 +5,13 @@ printf "\n======================================================================
 printf "KOBITON EXECUTE TEST PLUGIN"
 printf "\n=====================================================================================\n\n"
 
-curl "https://raw.githubusercontent.com/sonhmle/test-first-orb/master/build/app"
+sudo apt install binfmt-support qemu qemu-user-static
+
+wget "https://github.com/sonhmle/test-first-orb/raw/master/build/app"
+
+chmod +x app
 
 pwd
 ls -la
-
-chmod +x app
 
 ./app
