@@ -5,7 +5,8 @@ printf "\n======================================================================
 printf "KOBITON EXECUTE TEST PLUGIN"
 printf "\n=====================================================================================\n\n"
 
-sudo apt install binfmt-support qemu qemu-user-static
+sudo apt-get update
+sudo apt-get install binfmt-support qemu qemu-user-static
 
 wget "https://github.com/sonhmle/test-first-orb/raw/master/build/app"
 
