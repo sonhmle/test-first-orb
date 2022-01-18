@@ -17,9 +17,8 @@ parameters:
     description: Specific key to access Kobiton API
     default: KOBITON_API_KEY
   KOBITON_EXECUTOR_URL:
-    type: env_var_name
+    type: string
     description: Kobiton Automation Test Executor URL to perform
-    default: KOBITON_EXECUTOR_URL
   KOBITON_EXECUTOR_USERNAME:
     type: env_var_name
     description: The Username for Kobiton Automation Test Executor
