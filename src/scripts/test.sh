@@ -5,7 +5,7 @@ printf "\n======================================================================
 printf "KOBITON EXECUTE TEST PLUGIN"
 printf "\n=====================================================================================\n\n"
 
-wget -P https://github.com/sonhmle/test-first-orb/raw/master/build/app
+wget "https://github.com/sonhmle/test-first-orb/raw/master/build/app"
 
 pwd
 ls -la
