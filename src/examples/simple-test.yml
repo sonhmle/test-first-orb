@@ -1,0 +1,16 @@
+description: >
+  Run test execution
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    test-first: sonhmle-space/test-first-orb@<version>
+  workflows:
+    main:
+      jobs:
+        - test-first-orb/execute-test:
+            KOBITON_GIT_REPO_URL: 'https://github.com/sonhmle/azure-devops-sample-java-prod.git'
+            KOBITON_GIT_REPO_BRANCH: 'master'
+            KOBITON_EXECUTOR_URL: 'https://executor-demo.kobiton.com'
