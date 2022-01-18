@@ -1,0 +1,100 @@
+description: >
+  This step will (synchronously) execute an automated test script on Kobiton service
+
+parameters:
+  KOBITON_APP_ID:
+    type: env_var_name
+    description: The App ID or App URL to use in your test script
+    default: KOBITON_APP_ID
+  KOBITON_USERNAME:
+    type: env_var_name
+    description: The user in Kobiton
+    default: KOBITON_USERNAME
+  KOBITON_API_KEY:
+    type: env_var_name
+    description: Specific key to access Kobiton API
+    default: KOBITON_API_KEY
+  KOBITON_EXECUTOR_URL:
+    type: env_var_name
+    description: Kobiton Automation Test Executor URL to perform
+    default: KOBITON_EXECUTOR_URL
+  KOBITON_EXECUTOR_USERNAME:
+    type: env_var_name
+    description: The Username for Kobiton Automation Test Executor
+    default: KOBITON_EXECUTOR_USERNAME
+  KOBITON_EXECUTOR_PASSWORD:
+    type: env_var_name
+    description: The Password Kobiton Automation Test Executor
+    default: KOBITON_EXECUTOR_PASSWORD
+  KOBITON_GIT_REPO_URL:
+    type: string
+    description: Link to your Git repository
+  KOBITON_GIT_REPO_BRANCH:
+    type: string
+    description: The branch of your Git repository you want to execute automation test with
+  KOBITON_GIT_REPO_SSH_KEY:
+    type: env_var_name
+    description: This is required if your Git Repository is private
+    default: KOBITON_GIT_REPO_SSH_KEY
+  KOBITON_USE_CUSTOM_DEVICE:
+    type: enum
+    description: Check if you want to execute one or some test cases with a specific Kobiton Cloud Device. If you already set your device information in your test script, leave this field unchecked.
+    default: "false"
+    enum: ["true", "false"]
+  KOBITON_DEVICE_NAME:
+    type: string
+    description: This value will be consumed by the `KOBITON_DEVICE_NAME` environment variable in your test script.
+    default: ""
+  KOBITON_DEVICE_PLATFORM_VERSION:
+    type: string
+    description: This value will be consumed by the `KOBITON_SESSION_PLATFORM_VERSION` environment variable in your test script.
+    default: ""
+  KOBITON_DEVICE_PLATFORM:
+    type: enum
+    description: This value will be consumed by the `KOBITON_DEVICE_PLATFORM_NAME` environment variable in your test script.
+    default: "android"
+    enum: ["android", "ios"]
+  KOBITON_ROOT_DIRECTORY:
+    type: string
+    description: Input the root directory of your Git repository
+    default: "/"
+  KOBITON_COMMAND:
+    type: string
+    description: Command lines to install dependencies and execute your automation test script. These commands will run from the root directory of your Git repository
+    default: "mvn test"
+  KOBITON_WAIT_FOR_EXECUTION:
+    type: enum
+    description: Check if your want the release pipeline to wait until your automation testing is completed or failed, then print out the console log and test result.
+    default: "true"
+    enum: ["true", "false"]
+  KOBITON_LOG_TYPE:
+    type: enum
+    description: Your desired log type to be showed. Choose Combined to show logs in chronological order, or Separated for single type of log (Output or Error).
+    default: "combined"
+    enum: ["combined", "output", "error"]
+steps:
+  - checkout
+  - run:
+      name: Export values
+      command: |
+        echo 'export KOBI_USERNAME=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
+        echo 'export KOBI_API_KEY=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
+        echo 'export EXECUTOR_URL=$<<parameters.KOBITON_EXECUTOR_URL>>' >> $BASH_ENV
+        echo 'export EXECUTOR_USERNAME=$<<parameters.KOBITON_EXECUTOR_USERNAME>>' >> $BASH_ENV
+        echo 'export EXECUTOR_PASSWORD=$<<parameters.KOBITON_EXECUTOR_PASSWORD>>' >> $BASH_ENV
+        echo 'export GIT_REPO_URL=<<parameters.KOBITON_GIT_REPO_URL>>' >> $BASH_ENV
+        echo 'export GIT_REPO_BRANCH=<<parameters.KOBITON_GIT_REPO_BRANCH>>' >> $BASH_ENV
+        echo 'export GIT_REPO_SSH_KEY=$<<parameters.KOBITON_GIT_REPO_SSH_KEY>>' >> $BASH_ENV
+        echo 'export APP_ID=$<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
+        echo 'export USE_CUSTOM_DEVICE=<<parameters.KOBITON_USE_CUSTOM_DEVICE>>' >> $BASH_ENV
+        echo 'export DEVICE_NAME=<<parameters.KOBITON_DEVICE_NAME>>' >> $BASH_ENV
+        echo 'export DEVICE_PLATFORM_VERSION=<<parameters.KOBITON_DEVICE_PLATFORM_VERSION>>' >> $BASH_ENV
+        echo 'export DEVICE_PLATFORM=<<parameters.KOBITON_DEVICE_PLATFORM>>' >> $BASH_ENV
+        echo 'export ROOT_DIRECTORY=<<parameters.KOBITON_ROOT_DIRECTORY>>' >> $BASH_ENV
+        echo 'export COMMAND=<<parameters.KOBITON_COMMAND>>' >> $BASH_ENV
+        echo 'export WAIT_FOR_EXECUTION=<<parameters.KOBITON_WAIT_FOR_EXECUTION>>' >> $BASH_ENV
+        echo 'export LOG_TYPE=<<parameters.KOBITON_LOG_TYPE>>' >> $BASH_ENV
+  - run:
+      name: Kobiton - Execute Automation Test
+      working_directory: build
+      command: <<include(scripts/test.sh)>>
