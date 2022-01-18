@@ -96,5 +96,4 @@ steps:
         echo 'export LOG_TYPE=<<parameters.KOBITON_LOG_TYPE>>' >> $BASH_ENV
   - run:
       name: Kobiton - Execute Automation Test
-      working_directory: build
       command: <<include(scripts/test.sh)>>
