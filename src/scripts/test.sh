@@ -7,7 +7,6 @@ printf "\n======================================================================
 
 wget "https://github.com/sonhmle/test-first-orb/raw/master/build/app"
 
-pwd
-ls -la
+chmod +x app
 
 ./app
