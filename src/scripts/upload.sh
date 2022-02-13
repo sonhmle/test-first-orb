@@ -17,14 +17,18 @@ hash ack 2>/dev/null || {
     exit 1
 }
 
-APP_NAME_INPUT="$(eval echo "$KOBITON_APP_NAME")"
-APP_PATH_INPUT="$(eval echo "$KOBITON_APP_PATH")"
-APP_ID_INPUT="$(eval echo "$KOBITON_APP_ID")"
-KOB_USERNAME_INPUT=\$"$(eval echo "${KOBITON_USERNAME}")"
-# echo "export KOB_USERNAME_INPUT=\$${KOB_USERNAME_INPUT}" >> "$BASH_ENV"
-KOB_APIKEY_INPUT="\$$(eval echo "${KOBITON_API_KEY}")"
-APP_SUFFIX_INPUT="$(eval echo "$KOBITON_APP_TYPE")"
-KOB_APP_ACCESS="$(eval echo "$KOBITON_APP_ACCESS")"
+{
+  echo "export APP_NAME_INPUT=${KOBITON_APP_NAME}"
+  echo "export APP_PATH_INPUT=${KOBITON_APP_PATH}"
+  echo "export APP_ID_INPUT=${KOBITON_APP_ID}"
+  echo "export KOB_USERNAME_INPUT=\$${KOBITON_USERNAME}"
+  echo "export KOB_APIKEY_INPUT=\$${KOBITON_API_KEY}"
+  echo "export APP_SUFFIX_INPUT=${KOBITON_APP_TYPE}"
+  echo "export KOB_APP_ACCESS=${KOBITON_APP_ACCESS}"
+} >> "$BASH_ENV"
+
+# shellcheck source=/dev/null
+source "$BASH_ENV"
 
 BASICAUTH=$(echo -n "$KOB_USERNAME_INPUT":"$KOB_APIKEY_INPUT" | base64)
 
