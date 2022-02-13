@@ -35,25 +35,17 @@ parameters:
     enum: ["public", "private"]
 steps:
   - checkout
-  # - run:
-  #     name: Export values
-  #     command: |
-  #       echo 'export APP_NAME_INPUT=<<parameters.KOBITON_APP_NAME>>' >> $BASH_ENV
-  #       echo 'export APP_PATH_INPUT=<<parameters.KOBITON_APP_PATH>>' >> $BASH_ENV
-  #       echo 'export APP_ID_INPUT=<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
-  #       echo 'export KOB_USERNAME_INPUT=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
-  #       echo 'export KOB_APIKEY_INPUT=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
-  #       echo 'export APP_SUFFIX_INPUT=<<parameters.KOBITON_APP_TYPE>>' >> $BASH_ENV
-  #       echo 'export KOB_APP_ACCESS=<<parameters.KOBITON_APP_ACCESS>>' >> $BASH_ENV
+  - run:
+      name: Export values
+      command: |
+        echo 'export APP_NAME_INPUT=<<parameters.KOBITON_APP_NAME>>' >> $BASH_ENV
+        echo 'export APP_PATH_INPUT=<<parameters.KOBITON_APP_PATH>>' >> $BASH_ENV
+        echo 'export APP_ID_INPUT=<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
+        echo 'export KOB_USERNAME_INPUT=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
+        echo 'export KOB_APIKEY_INPUT=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
+        echo 'export APP_SUFFIX_INPUT=<<parameters.KOBITON_APP_TYPE>>' >> $BASH_ENV
+        echo 'export KOB_APP_ACCESS=<<parameters.KOBITON_APP_ACCESS>>' >> $BASH_ENV
   - run:
       name: Kobiton - Uploading an app
       working_directory: _tmp
-      environment:
-        KOBITON_APP_NAME: <<parameters.KOBITON_APP_NAME>>
-        KOBITON_APP_PATH: <<parameters.KOBITON_APP_PATH>>
-        KOBITON_APP_ID: <<parameters.KOBITON_APP_ID>>
-        KOBITON_USERNAME: <<parameters.KOBITON_USERNAME>>
-        KOBITON_API_KEY: <<parameters.KOBITON_API_KEY>>
-        KOBITON_APP_TYPE: <<parameters.KOBITON_APP_TYPE>>
-        KOBITON_APP_ACCESS: <<parameters.KOBITON_APP_ACCESS>>
       command: <<include(scripts/upload.sh)>>

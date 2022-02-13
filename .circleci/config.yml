@@ -25,6 +25,21 @@ executors:
     docker:
       - image: cimg/base:stable
 
+jobs:
+  # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
+  integration-test-1:
+    parameters:
+      executor:
+        type: executor
+    executor: <<parameters.executor>>
+    steps:
+      - test-first-orb/upload:
+          KOBITON_APP_PATH: ../demo/android-test.apk
+          KOBITON_APP_NAME: 'android-app'
+          KOBITON_APP_ID: '275643'
+          KOBITON_APP_ACCESS: public
+          KOBITON_APP_TYPE: apk
+
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
   # This workflow will run on every commit
@@ -59,6 +74,12 @@ workflows:
   integration-test_deploy:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
+      # Run any integration tests defined within the `jobs` key.
+      - integration-test-1:
+          context: orb-publishing
+          matrix:
+            parameters:
+              executor: ["cimg"]
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
@@ -71,6 +92,8 @@ workflows:
           add-pr-comment: false
           fail-if-semver-not-indicated: true
           publish-version-tag: false
+          requires:
+            - integration-test-1
           filters:
             branches:
               only:
