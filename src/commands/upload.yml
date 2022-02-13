@@ -52,8 +52,8 @@ steps:
         KOBITON_APP_NAME: <<parameters.KOBITON_APP_NAME>>
         KOBITON_APP_PATH: <<parameters.KOBITON_APP_PATH>>
         KOBITON_APP_ID: <<parameters.KOBITON_APP_ID>>
-        KOBITON_USERNAME: $<<parameters.KOBITON_USERNAME>>
-        KOBITON_API_KEY: "$<<parameters.KOBITON_API_KEY>>"
+        KOBITON_USERNAME: <<parameters.KOBITON_USERNAME>>
+        KOBITON_API_KEY: <<parameters.KOBITON_API_KEY>>
         KOBITON_APP_TYPE: <<parameters.KOBITON_APP_TYPE>>
         KOBITON_APP_ACCESS: <<parameters.KOBITON_APP_ACCESS>>
       command: <<include(scripts/upload.sh)>>
