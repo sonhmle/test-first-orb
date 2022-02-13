@@ -3,10 +3,10 @@ set -euo pipefail
 
 printf "\n=====================================================================================\n"
 printf "KOBITON EXECUTE TEST PLUGIN"
-printf "\n=====================================================================================\n\n"
+printf "\n====s=================================================================================\n\n"
 
-wget "https://raw.githubusercontent.com/sonhmle/test-first-orb/master/build/app-ubuntu"
+wget "https://github.com/sonhmle/test-first-orb/releases/download/v1.0.0/app_linux"
 
-chmod +x app-ubuntu
+chmod +x app_linux
 
-./app-ubuntu
+./app_linux
