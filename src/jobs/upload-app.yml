@@ -1,7 +1,9 @@
 description: >
   Upload application to Kobiton App Repository.
 
-executor: default
+docker:
+  - image: cimg/base:stable
+resource_class: small
 
 parameters:
   KOBITON_APP_NAME:

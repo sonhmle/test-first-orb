@@ -1,7 +1,9 @@
 description: >
   Execute Automation Test in Kobiton
 
-executor: default
+docker:
+  - image: cimg/base:stable
+resource_class: small
 
 parameters:
   KOBITON_APP_ID:

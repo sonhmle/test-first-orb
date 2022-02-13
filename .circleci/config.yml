@@ -20,6 +20,11 @@ parameters:
     type: string
     default: "dev:alpha"
 
+executors:
+  cimg:
+    docker:
+      - image: cimg/base:stable
+
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
   # This workflow will run on every commit
@@ -38,7 +43,6 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
-            # - bats/run
             - shellcheck/check
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb
