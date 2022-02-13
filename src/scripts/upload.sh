@@ -20,9 +20,9 @@ hash ack 2>/dev/null || {
 APP_NAME_INPUT="$(eval echo "$KOBITON_APP_NAME")"
 APP_PATH_INPUT="$(eval echo "$KOBITON_APP_PATH")"
 APP_ID_INPUT="$(eval echo "$KOBITON_APP_ID")"
-KOB_USERNAME_INPUT="$(eval echo "\$${KOBITON_USERNAME}")"
+KOB_USERNAME_INPUT=\$"$(eval echo "${KOBITON_USERNAME}")"
 # echo "export KOB_USERNAME_INPUT=\$${KOB_USERNAME_INPUT}" >> "$BASH_ENV"
-KOB_APIKEY_INPUT="$(eval echo "\$${KOBITON_API_KEY}")"
+KOB_APIKEY_INPUT="\$$(eval echo "${KOBITON_API_KEY}")"
 APP_SUFFIX_INPUT="$(eval echo "$KOBITON_APP_TYPE")"
 KOB_APP_ACCESS="$(eval echo "$KOBITON_APP_ACCESS")"
 
