@@ -39,14 +39,14 @@ jobs:
           KOBITON_APP_ID: '275643'
           KOBITON_APP_ACCESS: public
           KOBITON_APP_TYPE: apk
-      # - test-first-orb/test:
-      #     KOBITON_GIT_REPO_URL: 'https://github.com/sonhmle/azure-devops-sample-java-prod.git'
-      #     KOBITON_GIT_REPO_BRANCH: 'master'
-      #     KOBITON_EXECUTOR_URL: 'https://executor-demo.kobiton.com'
-      #     KOBITON_USE_CUSTOM_DEVICE: 'true'
-      #     KOBITON_DEVICE_NAME: 'Galaxy A20s'
-      #     KOBITON_DEVICE_PLATFORM: 'android'
-      #     KOBITON_DEVICE_PLATFORM_VERSION: '10'
+      - test-first-orb/test:
+          KOBITON_GIT_REPO_URL: 'https://github.com/sonhmle/azure-devops-sample-java-prod.git'
+          KOBITON_GIT_REPO_BRANCH: 'master'
+          KOBITON_EXECUTOR_URL: 'https://executor-demo.kobiton.com'
+          KOBITON_USE_CUSTOM_DEVICE: 'true'
+          KOBITON_DEVICE_NAME: 'Galaxy A20s'
+          KOBITON_DEVICE_PLATFORM: 'android'
+          KOBITON_DEVICE_PLATFORM_VERSION: '10'
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
