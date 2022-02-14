@@ -17,6 +17,20 @@ hash ack 2>/dev/null || {
     exit 1
 }
 
+# shellcheck disable=SC2153
+{
+  echo "export APP_NAME_INPUT=${APP_NAME}"
+  echo "export APP_PATH_INPUT=${APP_PATH}"
+  echo "export APP_ID_INPUT=${APP_ID}"
+  echo "export KOB_USERNAME_INPUT=\$${USERNAME}"
+  echo "export KOB_APIKEY_INPUT=\$${API_KEY}"
+  echo "export APP_SUFFIX_INPUT=${APP_TYPE}"
+  echo "export KOB_APP_ACCESS=${APP_ACCESS}"
+} >> "$BASH_ENV"
+
+# shellcheck source=/dev/null
+source "$BASH_ENV"
+
 BASICAUTH=$(echo -n "$KOB_USERNAME_INPUT":"$KOB_APIKEY_INPUT" | base64)
 
 echo "Using Auth: $BASICAUTH"
