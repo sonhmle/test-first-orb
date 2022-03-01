@@ -73,26 +73,44 @@ parameters:
     enum: ["combined", "output", "error"]
 steps:
   - checkout
-  - run:
-      name: Export values
-      command: |
-        echo 'export KOBI_USERNAME=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
-        echo 'export KOBI_API_KEY=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
-        echo 'export EXECUTOR_URL=<<parameters.KOBITON_EXECUTOR_URL>>' >> $BASH_ENV
-        echo 'export EXECUTOR_USERNAME=$<<parameters.KOBITON_EXECUTOR_USERNAME>>' >> $BASH_ENV
-        echo 'export EXECUTOR_PASSWORD=$<<parameters.KOBITON_EXECUTOR_PASSWORD>>' >> $BASH_ENV
-        echo 'export GIT_REPO_URL=<<parameters.KOBITON_GIT_REPO_URL>>' >> $BASH_ENV
-        echo 'export GIT_REPO_BRANCH=<<parameters.KOBITON_GIT_REPO_BRANCH>>' >> $BASH_ENV
-        echo 'export GIT_REPO_SSH_KEY=$<<parameters.KOBITON_GIT_REPO_SSH_KEY>>' >> $BASH_ENV
-        echo 'export APP_ID=<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
-        echo 'export USE_CUSTOM_DEVICE=<<parameters.KOBITON_USE_CUSTOM_DEVICE>>' >> $BASH_ENV
-        echo 'export DEVICE_NAME="<<parameters.KOBITON_DEVICE_NAME>>"' >> $BASH_ENV
-        echo 'export DEVICE_PLATFORM_VERSION=<<parameters.KOBITON_DEVICE_PLATFORM_VERSION>>' >> $BASH_ENV
-        echo 'export DEVICE_PLATFORM=<<parameters.KOBITON_DEVICE_PLATFORM>>' >> $BASH_ENV
-        echo 'export ROOT_DIRECTORY=<<parameters.KOBITON_ROOT_DIRECTORY>>' >> $BASH_ENV
-        echo 'export COMMAND="<<parameters.KOBITON_COMMAND>>"' >> $BASH_ENV
-        echo 'export WAIT_FOR_EXECUTION=<<parameters.KOBITON_WAIT_FOR_EXECUTION>>' >> $BASH_ENV
-        echo 'export LOG_TYPE=<<parameters.KOBITON_LOG_TYPE>>' >> $BASH_ENV
+  # - run:
+  #     name: Export values
+  #     command: |
+  #       echo 'export KOBI_USERNAME=$<<parameters.KOBITON_USERNAME>>' >> $BASH_ENV
+  #       echo 'export KOBI_API_KEY=$<<parameters.KOBITON_API_KEY>>' >> $BASH_ENV
+  #       echo 'export EXECUTOR_URL=<<parameters.KOBITON_EXECUTOR_URL>>' >> $BASH_ENV
+  #       echo 'export EXECUTOR_USERNAME=$<<parameters.KOBITON_EXECUTOR_USERNAME>>' >> $BASH_ENV
+  #       echo 'export EXECUTOR_PASSWORD=$<<parameters.KOBITON_EXECUTOR_PASSWORD>>' >> $BASH_ENV
+  #       echo 'export GIT_REPO_URL=<<parameters.KOBITON_GIT_REPO_URL>>' >> $BASH_ENV
+  #       echo 'export GIT_REPO_BRANCH=<<parameters.KOBITON_GIT_REPO_BRANCH>>' >> $BASH_ENV
+  #       echo 'export GIT_REPO_SSH_KEY=$<<parameters.KOBITON_GIT_REPO_SSH_KEY>>' >> $BASH_ENV
+  #       echo 'export APP_ID=<<parameters.KOBITON_APP_ID>>' >> $BASH_ENV
+  #       echo 'export USE_CUSTOM_DEVICE=<<parameters.KOBITON_USE_CUSTOM_DEVICE>>' >> $BASH_ENV
+  #       echo 'export DEVICE_NAME="<<parameters.KOBITON_DEVICE_NAME>>"' >> $BASH_ENV
+  #       echo 'export DEVICE_PLATFORM_VERSION=<<parameters.KOBITON_DEVICE_PLATFORM_VERSION>>' >> $BASH_ENV
+  #       echo 'export DEVICE_PLATFORM=<<parameters.KOBITON_DEVICE_PLATFORM>>' >> $BASH_ENV
+  #       echo 'export ROOT_DIRECTORY=<<parameters.KOBITON_ROOT_DIRECTORY>>' >> $BASH_ENV
+  #       echo 'export COMMAND="<<parameters.KOBITON_COMMAND>>"' >> $BASH_ENV
+  #       echo 'export WAIT_FOR_EXECUTION=<<parameters.KOBITON_WAIT_FOR_EXECUTION>>' >> $BASH_ENV
+  #       echo 'export LOG_TYPE=<<parameters.KOBITON_LOG_TYPE>>' >> $BASH_ENV
   - run:
       name: Kobiton - Execute Automation Test
+      environment:
+        USERNAME: <<parameters.KOBITON_USERNAME>>
+        API_KEY: <<parameters.KOBITON_API_KEY>>
+        EXECUTOR_URL_INPUT: <<parameters.KOBITON_EXECUTOR_URL>>
+        EXECUTOR_USERNAME_INPUT: <<parameters.KOBITON_EXECUTOR_USERNAME>>
+        EXECUTOR_PASSWORD_INPUT: <<parameters.KOBITON_EXECUTOR_PASSWORD>>
+        GIT_REPO_URL_INPUT: <<parameters.KOBITON_GIT_REPO_URL>>
+        GIT_REPO_BRANCH_INPUT: <<parameters.KOBITON_GIT_REPO_BRANCH>>
+        GIT_REPO_SSH_KEY_INPUT: <<parameters.KOBITON_GIT_REPO_SSH_KEY>>
+        APP_ID_INPUT: <<parameters.KOBITON_APP_ID>>
+        USE_CUSTOM_DEVICE_INPUT: <<parameters.KOBITON_USE_CUSTOM_DEVICE>>
+        DEVICE_NAME_INPUT: <<parameters.KOBITON_DEVICE_NAME>>
+        DEVICE_PLATFORM_VERSION_INPUT: <<parameters.KOBITON_DEVICE_PLATFORM_VERSION>>
+        DEVICE_PLATFORM_INPUT: <<parameters.KOBITON_DEVICE_PLATFORM>>
+        ROOT_DIRECTORY_INPUT: <<parameters.KOBITON_ROOT_DIRECTORY>>
+        COMMAND_INPUT: <<parameters.KOBITON_COMMAND>>
+        WAIT_FOR_EXECUTION_INPUT: <<parameters.KOBITON_WAIT_FOR_EXECUTION>>
+        LOG_TYPE_INPUT: <<parameters.KOBITON_LOG_TYPE>>
       command: <<include(scripts/test.sh)>>
